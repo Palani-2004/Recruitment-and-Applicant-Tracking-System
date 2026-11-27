@@ -1,0 +1,2739 @@
+/*
+ * Author       : palanivajravel1594
+ * Generated on : 27-Nov-2026 12:25:36
+ * Version      : 1.0
+ */
+ application "ITK Careers"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Application_Status_and_Information_Tracker
+		{
+			displayname = "Application Status and Information Tracker"
+			success message = "Data Added Successfully!"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Applicant
+			(
+				type = picklist	
+				values  = Registration_Form.ID
+    			displayformat = [" " + Name.prefix + " " + Name.first_name + " " + Name.last_name + " " + Name.suffix]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Interview_Round
+			(
+				type = picklist	
+				displayname = "Interview Round"
+				values  = Interview_Rounds_Master.ID
+    			displayformat = [Round_Order + " - " + Round_Name]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Round_Score
+			(
+				type = picklist
+				displayname = "Round Score"
+				maxchar = 100
+				values = {"1","2","3","4","5","6","7","8","9","10"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Round_Status
+			(
+				type = picklist
+				displayname = "Round Status"
+				maxchar = 100
+				values = {"Shortlisted to Next Round","on Hold","Rejected","Selected"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Iterviewer_Comments
+			(
+    			type = textarea
+				displayname = "Interviewer Comments"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Company_Master
+		{
+			displayname = "Company Master"
+			success message = "Company Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have ITK_Careers
+			(
+    			type = text
+				displayname = "Company Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Website
+			(
+    			type = url
+				enable  linkname
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Industry
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Company_Address
+			(
+    			type = address
+				displayname = "Company Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Contact_Email
+			(
+    			type = email
+				displayname = "Contact Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number1
+			(
+    			type = phonenumber
+				displayname = "Phone Number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		properties
+		{
+			total entries
+			{
+				allowed count = 1
+			}
+		}
+		}
+		form Employees1
+		{
+			displayname = "Employees"
+			success message = "Employee Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Employee_Name
+			(
+    			type = name
+				displayname = "Employee Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Email
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Phone_Number
+			(
+    			type = phonenumber
+				displayname = "Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Role
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Date_of_Joining
+			(
+    			type = date
+				displayname = " Date of Joining"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Software_Developer_Registration_Form
+			(
+				type = picklist	
+				displayname = "Software Developer- Registration Form"
+				values  = Registration_Form.ID
+    			displayformat = [ID]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Interview_Roles
+		{
+			displayname = "Interview Roles"
+			success message = "Interview Role Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			S_No
+			(
+				type = number
+				displayname = "S.No:"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Roles
+			(
+    			type = text
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		properties
+		{
+			total entries
+			{
+				allowed count = 3
+			}
+		}
+		}
+		form Interview_Rounds_Master
+		{
+			displayname = "Interview Rounds Master"
+			success message = "Interview Rounds Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Round_Order
+			(
+				type = number
+				displayname = "Round Order"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have unique Round_Name
+			(
+    			type = text
+				displayname = "Round Name"
+	 			row = 1
+	 			column = 2   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Interview_Schedule
+		{
+			displayname = "Interview Schedule"
+			success message = "Interview Schedule Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Applicant
+			(
+				type = picklist	
+				values  = Registration_Form.ID
+    			displayformat = [" " + Name.prefix + " " + Name.first_name + " " + Name.last_name + " " + Name.suffix]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Previous_Round_Status
+			(
+				type = picklist	
+				displayname = "Previous Round Status"
+				values  = Application_Status_and_Information_Tracker.ID
+    			displayformat = [Round_Status]
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Round_Name
+			(
+				type = picklist	
+				displayname = "Round Name"
+				values  = Interview_Rounds_Master.ID
+    			displayformat = [Round_Order + " - " + Round_Name]
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Interview_Start
+			(
+    			type = datetime
+				displayname = "Interview Start"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Interview_End
+			(
+    			type = datetime
+				displayname = "Interview End"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Schedule_Status
+			(
+				type = picklist
+				displayname = "Schedule Status"
+				maxchar = 100
+				values = {"Scheduled","Not Scheduled"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Master
+		{
+			success message = "Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Image
+			(
+    			type = image
+				source  = file
+				aspect ratio = original
+				camera = primary
+				show gallery = true
+				switch camera = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			ITK_Careers
+			(
+    			type = name
+				displayname = "ITK Careers"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+	     			 visibility = false
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+    			description
+    			[
+    				type = help_text
+    			 	message = "Zoho Premium Partner"
+    			]
+	 			row = 1
+	 			column = 1   
+				width = large
+				personal data = true
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form Registration_Form
+		{
+			displayname = "Registration Form"
+			success message = "Data Added Successfully!"
+			P
+			(
+				type = section
+				displayname = "Personal Details"
+				visibility = true
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Name
+			(
+    			type = name
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Gender
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Male","Female","Prefer not to disclose","Other"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			DOB
+			(
+    			type = date
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Address
+			(
+    			type = address
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Gmail
+			(
+    			type = email
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			Contact
+			(
+    			type = phonenumber
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have I_declare_that_the_my_First_Name_Last_Name_Date_Of_Birth_are_as_per_Aadhar
+			(
+    			type = checkbox
+				displayname = "I declare that the my First Name, Last Name & Date Of Birth are as per Aadhar."
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Academics
+			(
+				type = grid
+				Education
+				(
+					type = picklist
+					maxchar = 100
+					values = {"High School","Bacheloers","Masters"}
+					width = medium
+				)
+				Name_of_the_Institution
+				(
+    				type = text
+					displayname = "Name of the Institution"
+					width = medium
+				)
+				Year_of_Passed_Out
+				(
+					type = number
+					displayname = "Year of Passed Out"
+					width = medium
+				)
+				Percentage
+				(
+    				type = percentage
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Projects
+			(
+				type = grid
+				S_No
+				(
+					type = picklist
+					displayname = "S.No:"
+					maxchar = 100
+					values = {"1","2","3"}
+					width = medium
+				)
+				Project_Title
+				(
+    				type = text
+					displayname = "Project Title"
+					width = medium
+				)
+				Project_Description
+				(
+    				type = textarea
+					displayname = "Project Description"
+					height = 100px
+					width = medium
+				)
+				Sample_Output
+				(
+    				type = upload file
+					displayname = "Sample Output"
+				browse = local_drive, google_docs
+					width = medium
+				)
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Internship
+			(
+				type = section
+				visibility = true
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Do_you_have_any_Internship_Experience
+			(
+				type = radiobuttons
+				displayname = "Do you have any Internship Experience?"
+				maxchar = 100
+				values = {"Yes","No"}
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Intership_Experience
+			(
+				type = grid
+				displayname = "Intership Experience"
+				viewtype = list
+				S_No
+				(
+					type = picklist
+					displayname = "S.No:"
+					maxchar = 100
+					values = {"1","2","3"}
+					width = medium
+				)
+				Company_Name
+				(
+    				type = text
+					displayname = "Company Name - Role"
+					width = medium
+				)
+				Responsibilities
+				(
+    				type = textarea
+					height = 100px
+					width = medium
+				)
+				Start_Date
+				(
+    				type = date
+					displayname = "Start Date"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				End_Date
+				(
+    				type = date
+					displayname = "End Date"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				Duration_in_terms_of_Months
+				(
+					type = number
+					displayname = "Duration in terms of Months"
+					width = medium
+				)
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Positions
+			(
+				type = section
+				displayname = "Position we are Recruiting for"
+				visibility = true
+	 			row = 6
+	 			column = 0   
+				width = medium
+			)
+			Interview_Roles
+			(
+				type = picklist	
+				displayname = "Interview Roles"
+				values  = Interview_Roles.ID
+    			displayformat = [Roles]
+				sortorder = ascending
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Multi_LineSs
+			(
+    			type = textarea
+				displayname = "Describe you are fit for this Role"
+				height = 100px
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Documents
+			(
+				type = section
+				visibility = true
+	 			row = 7
+	 			column = 0   
+				width = medium
+			)
+			Resume
+			(
+    			type = upload file
+				browse = local_drive
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Additional_Documents
+			(
+    			type = upload file
+				displayname = "Additional Documents"
+    			file count = 10
+				browse = local_drive
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Terms_and_Conditions
+			(
+				type = section
+				displayname = "Terms and Conditions"
+				visibility = true
+	 			row = 8
+	 			column = 0   
+				width = medium
+			)
+			plain
+			(
+    			type = plaintext
+				value = "<div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; color: rgb(18, 19, 43); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration: none; font-size: 16px; margin: 0px; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\"><div style=\"font-family: Lato, sans-serif\">ITK CAREERS – APPLICANT TERMS AND CONDITIONS<br /></div><div style=\"font-family: Lato, sans-serif\">Role: Software Developer<br /></div></div><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; color: rgb(18, 19, 43); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration: none; font-size: 16px; margin: 0px; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\">By submitting your application through this form, you agree to the following terms:<br /></div><ol style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; margin: 0px; padding-top: inherit; padding-right: inherit; padding-bottom: inherit; padding-left: 20px; list-style: decimal; color: rgb(18, 19, 43); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration: none; font-size: 16px; border-bottom: 0px rgb(230, 232, 240)\" class=\"T9WCjf qkgVBf\"><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\"><div style=\"font-family: Lato, sans-serif\">Accuracy of Information<br /></div><div style=\"font-family: Lato, sans-serif\">You certify that all information, resumes, portfolios, and code samples provided in this application are true, accurate, and complete. Providing false, misleading, or plagiarized information (including AI-generated code represented as original work) will result in immediate disqualification or termination of employment if hired.<br /></div></div></li><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\"><div style=\"font-family: Lato, sans-serif\">Background and Reference Checks<br /></div><div style=\"font-family: Lato, sans-serif\">You authorize ITK Careers to verify the information provided in this application. This includes contacting listed references, previous employers, and educational institutions, as well as conducting background and technical qualification verifications where permitted by law.<br /></div></div></li><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\"><div style=\"font-family: Lato, sans-serif\">Submission of Code Samples and Assessments<br /></div><div style=\"font-family: Lato, sans-serif\">Any code, technical tasks, or project assignments submitted during this application process must be your own original work.<br /></div></div></li></ol><ul style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; list-style: inherit; margin: 12px 0px 16px; padding-top: inherit; padding-right: inherit; padding-bottom: inherit; padding-left: 20px; color: rgb(18, 19, 43); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration: none; font-size: 16px; border-bottom: 0px rgb(230, 232, 240)\" class=\"KsbFXc U6u95\"><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\">You retain the intellectual property rights to your original code.<br /></div></li><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\">However, ITK Careers reserves the right to review, test, and run your submissions through automated plagiarism and code-evaluation tools.<br /></div></li><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\">ITK Careers is not obligated to provide detailed feedback on technical assessments.<br /></div></li></ul><ol style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; margin: 0px; padding-top: inherit; padding-right: inherit; padding-bottom: inherit; padding-left: 20px; list-style: decimal; color: rgb(18, 19, 43); font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration: none; font-size: 16px; border-bottom: 0px rgb(230, 232, 240)\" class=\"T9WCjf qkgVBf\"><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\"><div style=\"font-family: Lato, sans-serif\">Data Privacy and Processing<br /></div><div style=\"font-family: Lato, sans-serif\">By submitting this form, you consent to ITK Careers collecting, storing, and processing your personal data, contact details, employment history, and technical profiles (such as GitHub or LinkedIn). This data will be used solely for recruitment, interview scheduling, and candidate evaluation purposes in accordance with our Privacy Policy.<br /></div></div></li><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\"><div style=\"font-family: Lato, sans-serif\">No Guarantee of Employment<br /></div><div style=\"font-family: Lato, sans-serif\">Submitting this application, participating in interviews, or completing technical assessments does not constitute an offer of employment or a guarantee of future placement with ITK Careers.<br /></div></div></li><li style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px 0px 12px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"Z1qcYe\"><div style=\"font-family: &quot;Google Sans&quot;, Arial, sans-serif, &quot;Noto Color Emoji&quot;; font-size: 16px; font-weight: 400; margin: 0px; text-decoration: none; border-bottom: 0px rgb(230, 232, 240)\" class=\"n6owBd awi2gc\"><div style=\"font-family: Lato, sans-serif\">Confidentiality<br /></div><div style=\"font-family: Lato, sans-serif\">During the recruitment process, you may receive proprietary information, technical challenges, or insights into ITK Careers' internal systems. You agree to keep all such interview materials, coding prompts, and company details strictly confidential and will not share them publicly or online<br /></div></div></li></ol><div><br /></div>"
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			I_would_like_to_receive_notifications_email_alerts_and_updates_about_future_career_opportunities_a
+			(
+    			type = checkbox
+				displayname = "I would like to receive notifications, email alerts, and updates about future career opportunities and relevant job openings at ITK Careers."
+				initial value = false
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			must have I_hereby_declare_that_all_the_information_provided_in_this_application_form_is_true_accurate_and_c
+			(
+    			type = checkbox
+				displayname = "I hereby declare that all the information provided in this application form is true, accurate, and complete to the best of my knowledge."
+				initial value = false
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			must have I_have_read_understood_and_agree_to_the_ITK_Careers_Applicant_Terms_and_Conditions_and_Privacy_Pol
+			(
+    			type = checkbox
+				displayname = "I have read, understood, and agree to the ITK Careers Applicant Terms and Conditions and Privacy Policy"
+				initial value = false
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list Registration_Form_Report
+		{
+			displayName = "Registration Form Report"
+			show all rows from Registration_Form    
+			(
+				Name 
+				Gender
+				DOB
+				Address 
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Gmail
+				Contact
+				(
+					displayformat = plainnumber
+				)
+				Academics.Education as "Academics"
+				I_declare_that_the_my_First_Name_Last_Name_Date_Of_Birth_are_as_per_Aadhar as "I declare that the my First Name, Last Name & Date Of Birth are as per Aadhar."
+				I_would_like_to_receive_notifications_email_alerts_and_updates_about_future_career_opportunities_a as "I would like to receive notifications, email alerts, and updates about future career opportunities and relevant job openings at ITK Careers."
+				I_hereby_declare_that_all_the_information_provided_in_this_application_form_is_true_accurate_and_c as "I hereby declare that all the information provided in this application form is true, accurate, and complete to the best of my knowledge."
+				I_have_read_understood_and_agree_to_the_ITK_Careers_Applicant_Terms_and_Conditions_and_Privacy_Pol as "I have read, understood, and agree to the ITK Careers Applicant Terms and Conditions and Privacy Policy"
+				Resume
+				Additional_Documents as "Additional Documents"
+				Projects.S_No as "Projects"
+				Intership_Experience.S_No as "Intership Experience"
+				Do_you_have_any_Internship_Experience as "Do you have any Internship Experience?"
+				custom action "Schedule Interview"
+				(
+	  			workflow = Schedule_1st_round
+				show action in edit record menu = true
+				column header = "Schedule Interview"
+				)
+				Interview_Roles as "Interview Roles"
+				Multi_LineSs as "Describe you are fit for this Role"
+			)
+
+		}
+		map Applicant_Location
+		{
+			displayName = "Applicant Location"
+			show all rows from Registration_Form    
+			(
+				Name 
+				Gender
+				DOB
+				Address 
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Gmail
+				Contact
+				(
+					displayformat = plainnumber
+				)
+				I_declare_that_the_my_First_Name_Last_Name_Date_Of_Birth_are_as_per_Aadhar as "I declare that the my First Name, Last Name & Date Of Birth are as per Aadhar."
+				Do_you_have_any_Internship_Experience as "Do you have any Internship Experience?"
+				Resume
+				Additional_Documents as "Additional Documents"
+				I_would_like_to_receive_notifications_email_alerts_and_updates_about_future_career_opportunities_a as "I would like to receive notifications, email alerts, and updates about future career opportunities and relevant job openings at ITK Careers."
+				I_hereby_declare_that_all_the_information_provided_in_this_application_form_is_true_accurate_and_c as "I hereby declare that all the information provided in this application form is true, accurate, and complete to the best of my knowledge."
+				I_have_read_understood_and_agree_to_the_ITK_Careers_Applicant_Terms_and_Conditions_and_Privacy_Pol as "I have read, understood, and agree to the ITK Careers Applicant Terms and Conditions and Privacy Policy"
+			)
+
+			options
+			(
+	 			display field = Address
+	 		)
+		}
+		default list All_Masters
+		{
+			displayName = "All Masters"
+			show all rows from Master    
+			(
+				ITK_Careers  as "ITK Careers"
+				Image
+			)
+
+		}
+		default list All_Company_Masters
+		{
+			displayName = "All Company Masters"
+			show all rows from Company_Master    
+			(
+				ITK_Careers as "Company Name"
+				Website
+				Industry
+				Company_Address  as "Company Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Contact_Email as "Contact Email"
+				Phone_Number1 as "Phone Number"
+				(
+					displayformat = plainnumber
+				)
+			)
+
+		}
+		default list All_Interview_Rounds_Masters
+		{
+			displayName = "All Interview Rounds Masters"
+			show all rows from Interview_Rounds_Master    
+			(
+				Round_Name as "Round Name"
+				Round_Order as "Round Order"
+				ID
+			)
+
+			sort by
+			(
+				Round_Order ascending
+			)
+		}
+		default list Application_Status_and_Information_Tracker_Report
+		{
+			displayName = "Application Status and Information Tracker Report"
+			show all rows from Application_Status_and_Information_Tracker    
+			(
+				Applicant
+				Interview_Round as "Interview Round"
+				Round_Score as "Round Score"
+				Round_Status as "Round Status"
+				Iterviewer_Comments as "Interviewer Comments"
+			)
+
+		}
+		default list All_Interview_Schedules
+		{
+			displayName = "All Interview Schedules"
+			show all rows from Interview_Schedule    
+			(
+				Applicant
+				Round_Name as "Round Name"
+				Interview_Start as "Interview Start"
+				Interview_End as "Interview End"
+				Schedule_Status as "Schedule Status"
+				custom action "Validate"
+				(
+	  			workflow = Validate_Workflow
+				show action in edit record menu = true
+				column header = "Validate"
+				condition = (Schedule_Status == "Scheduled")
+				)
+				custom action "Schedule Interview"
+				(
+	  			workflow = Schedule_Interview
+				show action in edit record menu = true
+				column header = "Schedule Interview"
+				condition = (Previous_Round_Status.Round_Status == "Shortlisted to Next Round")
+				)
+				Previous_Round_Status as "Previous Round Status"
+				(
+					view = Application_Status_and_Information_Tracker_Report
+				)
+			)
+
+		}
+		default list All_Employees1
+		{
+			displayName = "All Employees"
+			show all rows from Employees1    
+			(
+				Employee_Name  as "Employee Name"
+				Email
+				Phone_Number as "Phone"
+				(
+					displayformat = plainnumber
+				)
+				Role
+				Date_of_Joining as " Date of Joining"
+				Software_Developer_Registration_Form as "Registration Form"
+			)
+
+		}
+		default list All_Interview_Roles
+		{
+			displayName = "All Interview Roles"
+			show all rows from Interview_Roles    
+			(
+				S_No as "S.No:"
+				Roles
+			)
+
+		}
+	}
+	pages
+	{
+		page Application_Dasboard
+		{
+			displayname = "Application Dasboard"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet1' elementName='HTML Snippet 1'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet1()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div style=&quot;\n  background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%);\n  border-radius: 14px;\n  padding: 26px 32px;\n  margin-bottom: 22px;\n  color: #ffffff;\n  font-family: -apple-system, BlinkMacSystemFont, &apos;Segoe UI&apos;, Roboto, Helvetica, Arial, sans-serif;\n  box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25);\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  flex-wrap: wrap;\n  gap: 20px;\n&quot;&gt;\n\n  &lt;!-- Left: Branding &amp; Tagline --&gt;\n  &lt;div style=&quot;flex: 1 1 360px;&quot;&gt;\n    &lt;div style=&quot;display: flex; align-items: center; gap: 12px; margin-bottom: 6px;&quot;&gt;\n      &lt;span style=&quot;\n        background: rgba(255, 255, 255, 0.18);\n        padding: 8px 12px;\n        border-radius: 10px;\n        font-size: 22px;\n        backdrop-filter: blur(4px);\n      &quot;&gt;\uD83D\uDE80&lt;/span&gt;\n      &lt;h1 style=&quot;margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff;&quot;&gt;\n        ITK Careers &amp; Talent Acquisition\n      &lt;/h1&gt;\n    &lt;/div&gt;\n    &lt;p style=&quot;margin: 0 0 14px 0; font-size: 14px; color: #e0f2fe; line-height: 1.5;&quot;&gt;\n      Welcome to the central Software Developer recruitment portal. Track candidate progression, manage interview rounds, and onboard top-tier tech talent seamlessly.\n    &lt;/p&gt;\n\n    &lt;!-- Company Quick Highlights --&gt;\n    &lt;div style=&quot;display: flex; gap: 10px; flex-wrap: wrap;&quot;&gt;\n      &lt;span style=&quot;background: rgba(255, 255, 255, 0.15); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;&quot;&gt;\n        \uD83D\uDCCD Chennai\n      &lt;/span&gt;\n      &lt;span style=&quot;background: rgba(255, 255, 255, 0.15); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;&quot;&gt;\n        \uD83D\uDCBC Tech &amp; Engineering Division\n      &lt;/span&gt;\n      &lt;span style=&quot;background: rgba(16, 185, 129, 0.25); border: 1px solid rgba(16, 185, 129, 0.5); color: #a7f3d0; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;&quot;&gt;\n        \u25CF Active Recruitment Drive\n      &lt;/span&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n\n  &lt;!-- Right: Quick Portal Stats / Action Box --&gt;\n  &lt;div style=&quot;\n    background: rgba(255, 255, 255, 0.12);\n    border: 1px solid rgba(255, 255, 255, 0.2);\n    border-radius: 12px;\n    padding: 16px 22px;\n    display: flex;\n    flex-direction: column;\n    gap: 8px;\n    min-width: 220px;\n    backdrop-filter: blur(6px);\n  &quot;&gt;\n    &lt;div style=&quot;font-size: 12px; color: #bae6fd; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px;&quot;&gt;\n      Recruiter Quick Links\n    &lt;/div&gt;\n    &lt;a href=&quot;#Form:Software_Developer_Registration_Form&quot; target=&quot;_self&quot; style=&quot;\n      background: #ffffff;\n      color: #0369a1;\n      text-decoration: none;\n      padding: 7px 14px;\n      border-radius: 6px;\n      font-size: 13px;\n      font-weight: 700;\n      text-align: center;\n      transition: all 0.2s;\n      display: inline-block;\n    &quot;&gt;\n      + New Candidate Registration\n    &lt;/a&gt;\n\n  &lt;/div&gt;\n\n&lt;/div&gt;\n&lt;%\n\n}%&gt;]]>\n</dsp>\n</column>\n</row><row>\n\t<column\n   \t\t width='38%'\n   \t>\n\t<panel elementName='Panel 1'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '5px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#2A70E7'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF0048'\n    borderWidth = '0px'\n\n\t  value = 'thisapp.Registration_Form.ID.count'\n>\n</text>\n\n</pc><pc \n\t\n>\n\t<image  \n\t\tmargin = '0px'\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\tcolor = '#FFFFFF'\n\tbgColor = '#2A70E7'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'users-2-a-star'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'solid'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'Total Applications'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='18%'\n   \t>\n\t<panel elementName='Panel 2'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '5px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FF0048'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF0048'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Round_Status == &quot;on Hold&quot;'\n\t  value = 'thisapp.Application_Status_and_Information_Tracker.ID.count'\n>\n</text>\n\n</pc><pc \n\t\n>\n\t<image  \n\t\n\tcolor = '#FFFFFF'\n\tbgColor = '#FF0048'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'users-2-a-star'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'solid'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'On Hold'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='17%'\n   \t>\n\t<panel elementName='Panel'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '5px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#FFFF00'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = '#FFFFFF'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Round_Status == &quot;Shortlisted to Next Round&quot;'\n\t  value = 'thisapp.Application_Status_and_Information_Tracker.ID.count'\n>\n</text>\n\n</pc><pc \n\t\n>\n\t<image  \n\t\tmargin = '0px'\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\tcolor = '#FFFFFF'\n\tbgColor = '#FFFF00'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'users-2-a-star'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'In Progress'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column><column\n   \t\t width='27%'\n   \t>\n\t<panel elementName='Panel 3'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\thAlign = 'center'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '5px' \n\tmarginBottom = '0px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#0ABB51'\n\tsize = '36px'\n\tbold = 'true' \n\ttype = 'Form Data'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\tdisplayType = 'actual'\n\tthousandsSeperator = 'LOCALE'\n\tdecimalSeperator = 'DOT'\n\tnumberScale = 'none'\n\n\n\n    borderColor = '#FF0048'\n    borderWidth = '0px'\n\n\t\tcriteria = 'Round_Status == &quot;Selected&quot;'\n\t  value = 'thisapp.Application_Status_and_Information_Tracker.ID.count'\n>\n</text>\n\n</pc><pc \n\t\n>\n\t<image  \n\t\tmargin = '0px'\n\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\tcolor = '#000000'\n\tbgColor = '#0ABB51'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'users-2-a-star'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'solid'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '0px'\n\tmarginTop = '5px'\n\tpadding = '0px'\n\tcolor = '#333333'\n\tsize = '16px'\n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#333333'\n    borderWidth = '0px'\n\n\t  value = 'Selected'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;div style=&quot;background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin: 15px 0; font-family: sans-serif;&quot;&gt;\n  &lt;h3 style=&quot;margin-top: 0; color: #1e293b;&quot;&gt;\uD83D\uDCCC How the Hiring Process Works&lt;/h3&gt;\n  &lt;div style=&quot;display: flex; justify-content: space-between; align-items: center; text-align: center; gap: 10px; flex-wrap: wrap;&quot;&gt;\n    \n    &lt;div style=&quot;flex: 1; min-width: 160px; background: #ffffff; padding: 14px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);&quot;&gt;\n      &lt;div style=&quot;font-size: 20px;&quot;&gt;\uD83D\uDCDD&lt;/div&gt;\n      &lt;div style=&quot;font-weight: bold; margin: 6px 0 2px; color: #0f172a;&quot;&gt;1. Apply&lt;/div&gt;\n      &lt;div style=&quot;font-size: 12px; color: #64748b;&quot;&gt;Candidate registered via Registration Form&lt;/div&gt;\n    &lt;/div&gt;\n    \n    &lt;div style=&quot;font-size: 20px; color: #94a3b8;&quot;&gt;\u2794&lt;/div&gt;\n\n    &lt;div style=&quot;flex: 1; min-width: 160px; background: #ffffff; padding: 14px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);&quot;&gt;\n      &lt;div style=&quot;font-size: 20px;&quot;&gt;\uD83D\uDCC5&lt;/div&gt;\n      &lt;div style=&quot;font-weight: bold; margin: 6px 0 2px; color: #0f172a;&quot;&gt;2. Schedule&lt;/div&gt;\n      &lt;div style=&quot;font-size: 12px; color: #64748b;&quot;&gt;Round start &amp; end dates assigned&lt;/div&gt;\n    &lt;/div&gt;\n\n    &lt;div style=&quot;font-size: 20px; color: #94a3b8;&quot;&gt;\u2794&lt;/div&gt;\n\n    &lt;div style=&quot;flex: 1; min-width: 160px; background: #ffffff; padding: 14px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);&quot;&gt;\n      &lt;div style=&quot;font-size: 20px;&quot;&gt;\uD83C\uDFAF&lt;/div&gt;\n      &lt;div style=&quot;font-weight: bold; margin: 6px 0 2px; color: #0f172a;&quot;&gt;3. Validate Score&lt;/div&gt;\n      &lt;div style=&quot;font-size: 12px; color: #64748b;&quot;&gt;Score \u2265 7: Shortlisted&lt;br&gt;3 &lt; Score &lt; 7: Hold&lt;br&gt;Score \u2264 3: Rejected&lt;/div&gt;\n    &lt;/div&gt;\n\n    &lt;div style=&quot;font-size: 20px; color: #94a3b8;&quot;&gt;\u2794&lt;/div&gt;\n\n    &lt;div style=&quot;flex: 1; min-width: 160px; background: #ffffff; padding: 14px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);&quot;&gt;\n      &lt;div style=&quot;font-size: 20px;&quot;&gt;\uD83C\uDF89&lt;/div&gt;\n      &lt;div style=&quot;font-weight: bold; margin: 6px 0 2px; color: #0f172a;&quot;&gt;4. Hired&lt;/div&gt;\n      &lt;div style=&quot;font-size: 12px; color: #64748b;&quot;&gt;HR round cleared \u2192 Added to Employees&lt;/div&gt;\n    &lt;/div&gt;\n\n  &lt;/div&gt;\n&lt;/div&gt;\n&lt;%\n\n}%&gt;]]>\n</dsp>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<board\n    \n\tbgColor = '#FFFFFF'\n        bgColorType = 'solid'\n\tpadding = '0px'\nelementName='Board'\n    layoutType = 'grid'\n        items = '3'\n    appLinkName = 'thisapp'\n    formLinkName = 'Application_Status_and_Information_Tracker'\n    rankBy = 'ID'\n    rankOrder = 'highestToLowest'\n    rankAggregate = 'count'\n    limit = '3'\n    groupBy = 'Applicant.Gender'\n>\n<boardHeader>\n    <pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpaddingTop = '14px'\n\tpaddingLeft = '15px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '14px'\n\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '16px'\n\tbold = 'true' \n\ttype = 'Text'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'Candidates Count Based on Gender'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</boardHeader>\n<boardLayout\n                paddingRight = '15px'\n                paddingBottom = '14px'\n                paddingLeft = '15px'\n                paddingTop = '2px'\n                itemGap = '10px'\n>\n    <pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '10px'\n\n    borderColor = '#F2F2F2'\n    borderWidth = '1px'\n\t\twidth = '100%'\n\t\thAlign = 'left'\n\t\tvAlign = 'middle'\n    \tcornerRadius = '12px'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t>\n\t<pc \n\t\n>\n\t<image  \n\t\tmarginBottom = '10px'\n\n    borderWidth = '0px'\n\tcolor = '#000000'\n\tbgColor = '#F7F7FB'\n\twidth = '40px'\n\theight = '40px'\n\ttype = 'icon'\n\tvalue = 'shopping-mobile-cart'\n\tsize = '22px'\n\tcornerRadius = '20px'\n\ticonType = 'outline'\n/>\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmarginLeft = '0px'\n\tmarginRight = '0px' \n\tmarginBottom = '10px'\n\tmarginTop = '0px'\n\tpadding = '0px'\n\tcolor = '#000000'\n\tsize = '16px'\n\ttype = 'boardData'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n    lineHeight = '22'\n    numOfLines = '1'\n\n\n\n\n    borderColor = '#000000'\n    borderWidth = '0px'\n\n\t  value = 'groupedField'\n>\n</text>\n\n</pc>\n</pr><pr \n\t>\n\t<pc \n\t\n>\n\t<text \n\n\tmargin = '0px'\n\tpadding = '0px'\n\tcolor = 'theme'\n\tsize = '21px'\n\tbold = 'true' \n\ttype = 'Aggregate'\n\n\tbgColor = 'transparent'\n        bgColorType = 'noFill'\n\tcornerRadius = '0px'\n\n    lineHeight = '28'\n    numOfLines = '1'\n\n\n\n\n    borderColor = '#5051F9'\n    borderWidth = '0px'\n\n\t  value = 'ID.count'\n>\n</text>\n\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</boardLayout>\n</board>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Report'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'Registration_Form_Report'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 4'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\tpadding = '5px'\n\n>\n\t<pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<text \n\n\tsize = '20px'\n\ttype = 'Text'\n\n\n\n\n\n\n\n\t  value = 'Applicant Location'\n>\n</text>\n\n</pc>\n</pr><pr \n\t\t\twidth='fill'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\twidth = '100%'\n>\n\t<button \n\t\tmargin = '0px'\n\tpaddingTop = '12px'\n\tpaddingLeft = '15px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '12px'\n\n    action = 'OpenReport'\n\t\tcomponentLinkName = 'Applicant_Location'\n\t\ttarget = 'popup'\n\t\tpopupWidth = '70%'\n\t  \tpopupHeight = '300px'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\ttext ='View'\n\t\tbgColor = '#0072F4'\n\t\tcornerRadius = '3px' \n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Candidates Application Status'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'Application_Status_and_Information_Tracker_Report'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<chart \n\telementName='Male Candidate Performance'\n\n\ttype = 'Line'\n\txtitle = 'Rounds'\n\tbgColor = '#FFFFFF'\n\ttheme = 'theme1'\n\tlegendPos = 'center.top'\n\theightType = 'auto'\n\theightValue = '300px'\n\tappLinkName = 'thisapp'\n\tformLinkName = 'Application_Status_and_Information_Tracker'\n\txfield = 'Round_Score'\n\tyfields = 'count:Applicant.Gender'\n\tyAxisInterval = '1'\n/>\n\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Interview Schedules'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Interview_Schedules'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<report \n\telementName='Selected Candidates'\n\n\t\tappLinkName = 'thisapp'\n\t\tlinkName = 'All_Employees1'\n\t\n\t\tiszreport = 'false'\n\theightType = 'auto'\n\theightValue = '700'\n/>\n</column>\n</row><row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<panel elementName='Panel 5'\n \n >\n\t<pr \n\t\t\twidth='fill'\n\t\theight='fill'\n>\n\t<pc \n\t\tpadding = '20px'\n\tbgColor = '#FFFFFF'\n\n\t\twidth = '100%'\n\t\tvAlign = 'middle'\n>\n\t<pr \n\t\t\twidth='auto'\n\t\theight='auto'\n>\n\t<pc \n\t\n\t\tvAlign = 'middle'\n>\n\t<button \n\t\tmargin = '0px'\n\tpaddingTop = '12px'\n\tpaddingLeft = '15px'\n\tpaddingRight = '15px'\n\tpaddingBottom = '12px'\n\n    action = 'OpenForm'\n\t\tcomponentLinkName = 'Registration_Form'\n\t\ttarget = 'new-window'\n\tcolor = '#FFFFFF'\n\tsize = '16px'\n    borderColor = '#FFFFFF'\n    borderWidth = '0px'\n\ttext ='Update Details'\n\t\tbgColor = 'theme'\n\t\tcornerRadius = '60px' \n/>\n</pc>\n</pr>\n</pc>\n</pr>\n</panel>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void BasicFunc()
+                 {
+                 }
+			 }
+		 }
+
+
+		workflow
+		{
+		form
+		{
+			Hide_Subform as "Hide Subform"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add
+
+				field rules
+				{
+					actions 
+					{
+						hide Academics;
+					}
+				}
+
+			}
+			Hide_Status as "Hide Status"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											enable Gender;
+										input.Gender = "Female";
+						)
+					}
+				}
+
+			}
+			fill_email as "fill email"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add
+					status = inactive
+
+				on user input of Name
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											input.Gmail = input.Name + "@gmail.com";
+						)
+					}
+				}
+
+			}
+			fill_Si as "fill Si"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add
+
+				on add row of Projects
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											row.S_No="1";
+						)
+					}
+				}
+
+			}
+			alert as "alert"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add
+					status = inactive
+
+				on validate
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Name != null)
+										{
+											alert "Please Fill the Name";
+											cancel submit;
+										}
+						)
+					}
+				}
+
+			}
+			Applicant_to_Employee as "Applicant to Employee"
+			{
+				type =  form
+				form = Employees1
+
+				record event = on add or edit
+
+				on success
+				{
+				}
+
+			}
+			Applicant_to_Employee1 as "Applicant to Employee"
+			{
+				type =  form
+				form = Application_Status_and_Information_Tracker
+
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Round_Status == "Selected")
+										{
+											applicantDetails = Registration_Form[ID = input.Applicant];
+											if(applicantDetails.count() > 0)
+											{
+												existingEmployee = Employees1[Email == applicantDetails.Gmail];
+												if(existingEmployee.count() == 0)
+												{
+													insert into Employees1
+													[
+														Employee_Name=applicantDetails.Name
+														Email=applicantDetails.Gmail
+														Phone_Number=applicantDetails.Contact
+														Date_of_Joining=zoho.currentdate.addDay(7)
+														Added_User=zoho.loginuser
+													]
+													//applicantDetails.Status = "Hired / Selected";
+												}
+											}
+										}
+						)
+					}
+				}
+
+			}
+			First_round_Scheduling as "First round Scheduling"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add or edit
+
+				on success
+				{
+				}
+
+			}
+			Schedule_Status_Updating as "Schedule Status Updating"
+			{
+				type =  form
+				form = Interview_Schedule
+
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(Interview_Start != null && Interview_End != null)
+										{
+											input.Schedule_Status = "Scheduled";
+										}
+										else
+										{
+											input.Schedule_Status = "Not Scheduled";
+										}
+										//disable Schedule_Status;
+						)
+					}
+				}
+
+			}
+			navigate_to_Next_Intervie as "navigate to Next Interview schedule"
+			{
+				type =  form
+				form = Application_Status_and_Information_Tracker
+
+				record event = on add
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											openUrl("#Report:All_Interview_Schedules","same window");
+						)
+					}
+				}
+
+			}
+			Round_Status_automation as "Round Status automation"
+			{
+				type =  form
+				form = Application_Status_and_Information_Tracker
+
+				record event = on add or edit
+
+				on user input of Round_Score
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Round_Score != null)
+										{
+											scoreVal = input.Round_Score.toDecimal();
+											if(scoreVal >= 7)
+											{
+												if(input.Interview_Round == 491369000000076011)
+												{
+													input.Round_Status = "Selected";
+												}
+												else
+												{
+													input.Round_Status = "Shortlisted to Next Round";
+												}
+											}
+											else if(scoreVal > 3 && scoreVal < 7)
+											{
+												input.Round_Status = "On Hold";
+											}
+											else
+											{
+												input.Round_Status = "Rejected";
+											}
+										}
+						)
+					}
+				}
+
+			}
+			Previous_round_status_for as "Previous round status for validate button"
+			{
+				type =  form
+				form = Interview_Schedule
+
+				record event = on add or edit
+
+				on user input of Applicant
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											trackerRecord = Application_Status_and_Information_Tracker[Applicant == input.Applicant] sort by Added_Time desc;
+										if(trackerRecord.count() > 0)
+										{
+											input.Previous_Round_Status = trackerRecord.ID;
+											/*if(trackerRecord.Round_Status == "Shortlisted to next round")
+										    {
+										        disable Validate;
+										    }
+										    else
+										    {
+										        enable Validate;
+										    } */
+										}
+						)
+					}
+				}
+
+			}
+			Hide_Previous_Round_Statu as "Hide Previous Round Status"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add
+
+				on load
+				{
+				}
+
+			}
+			Hide_Previous_Round_Statu1 as "Hide Previous Round Status"
+			{
+				type =  form
+				form = Interview_Schedule
+
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(input.Round_Name == 491369000000076005)
+										{
+											hide Previous_Round_Status;
+										}
+										else
+										{
+											disable Previous_Round_Status;
+										}
+										// Hide the schedule status all the time
+										hide Schedule_Status;
+						)
+					}
+				}
+
+			}
+			Disable_Schedule_Intervie as "Disable Schedule Interview"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add or edit
+
+				on success
+				{
+				}
+
+			}
+			Hide_Schedule_Interview as "Hide Schedule Interview"
+			{
+				type =  form
+				form = Registration_Form
+
+				record event = on add or edit
+
+				on load
+				{
+				}
+
+			}
+		}
+
+
+
+
+
+
+		functions
+		{
+			Validate_Workflow as "Validate Workflow"
+			{
+				type =  functions
+				form = Interview_Schedule
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						openUrl("#Form:Application_Status_and_Information_Tracker?Applicant=" + input.Applicant + "&Interview_Round=" + input.Round_Name,"same window");
+					)
+					}
+				}
+			}
+			Schedule_1st_round as "Schedule 1st round"
+			{
+				type =  functions
+				form = Registration_Form
+				execution type = for each record	
+				on start
+				{
+					actions 
+					{
+					on click
+					(
+						existingSchedule = Interview_Schedule[Applicant == input.ID && Round_Name == 491369000000076005];
+										if(existingSchedule.count() > 0)
+										{
+											info "Technical Round 1 is already scheduled for this candidate.";
+										}
+										else
+										{
+											openUrl("#Form:Interview_Schedule?Applicant=" + input.ID + "&Round_Name=491369000000076005","popup window");
+										}
+					)
+					}
+				}
+			}
+			Schedule_Interview as "Schedule Interview"
+			{
+				type =  functions
+				form = Interview_Schedule
+				execution type = for each record	
+				on start
+				{
+					actions  (Schedule_Status != "Scheduled")
+					{
+					on click
+					(
+						sched_record = Interview_Schedule[Applicant == input.Applicant && Round_Name == input.Round_Name];
+										next_round = input.Round_Name;
+										if(sched_record.count() > 0)
+										{
+											sched_record.Schedule_Status="Scheduled";
+											if(input.Round_Name = 491369000000076005)
+											{
+												next_round = 491369000000076007;
+											}
+											else if(input.Round_Name = 491369000000076007)
+											{
+												next_round = 491369000000076009;
+											}
+											else
+											{
+												next_round = 491369000000076011;
+											}
+										}
+										openUrl("#Form:Interview_Schedule?Applicant=" + input.Applicant + "&Round_Name=" + next_round,"popup window");
+					)
+					}
+				}
+			}
+		}
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Application_Status_and_Information_Tracker
+			{
+				label placement = left
+			}
+			form Company_Master
+			{
+				label placement = left
+			}
+			form Employees1
+			{
+				label placement = left
+			}
+			form Interview_Roles
+			{
+				label placement = left
+			}
+			form Interview_Rounds_Master
+			{
+				label placement = left
+			}
+			form Interview_Schedule
+			{
+				label placement = left
+			}
+			form Master
+			{
+				label placement = left
+			}
+			form Registration_Form
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report Registration_Form_Report
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								Name
+								Gender
+								DOB
+								Address
+								Gmail
+								Contact
+								Academics.Education as "Academics"
+								"Schedule Interview"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit 
+							Duplicate 
+							Delete 
+							"Schedule Interview"
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Name
+								Gender
+								DOB
+								Address
+								Gmail
+								Contact
+								Academics.Education as "Academics"
+								I_declare_that_the_my_First_Name_Last_Name_Date_Of_Birth_are_as_per_Aadhar as "I declare that the my First Name, Last Name & Date Of Birth are as per Aadhar."
+								I_would_like_to_receive_notifications_email_alerts_and_updates_about_future_career_opportunities_a as "I would like to receive notifications, email alerts, and updates about future career opportunities and relevant job openings at ITK Careers."
+								I_hereby_declare_that_all_the_information_provided_in_this_application_form_is_true_accurate_and_c as "I hereby declare that all the information provided in this application form is true, accurate, and complete to the best of my knowledge."
+								I_have_read_understood_and_agree_to_the_ITK_Careers_Applicant_Terms_and_Conditions_and_Privacy_Pol as "I have read, understood, and agree to the ITK Careers Applicant Terms and Conditions and Privacy Policy"
+								Resume
+								Additional_Documents as "Additional Documents"
+								Projects.S_No as "Projects"
+								Intership_Experience.S_No as "Intership Experience"
+								Do_you_have_any_Internship_Experience as "Do you have any Internship Experience?"
+								Interview_Roles as "Interview Roles"
+								Multi_LineSs as "Describe you are fit for this Role"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Applicant_Location
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+		 				type = 1
+						datablock1
+						(
+							layout type = 1
+							fields
+							(
+								Name
+								Gender
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit 
+							Duplicate 
+							Delete 
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Name
+								Gender
+								DOB
+								Address
+								Gmail
+								Contact
+								I_declare_that_the_my_First_Name_Last_Name_Date_Of_Birth_are_as_per_Aadhar as "I declare that the my First Name, Last Name & Date Of Birth are as per Aadhar."
+								Do_you_have_any_Internship_Experience as "Do you have any Internship Experience?"
+								Resume
+								Additional_Documents as "Additional Documents"
+								I_would_like_to_receive_notifications_email_alerts_and_updates_about_future_career_opportunities_a as "I would like to receive notifications, email alerts, and updates about future career opportunities and relevant job openings at ITK Careers."
+								I_hereby_declare_that_all_the_information_provided_in_this_application_form_is_true_accurate_and_c as "I hereby declare that all the information provided in this application form is true, accurate, and complete to the best of my knowledge."
+								I_have_read_understood_and_agree_to_the_ITK_Careers_Applicant_Terms_and_Conditions_and_Privacy_Pol as "I have read, understood, and agree to the ITK Careers Applicant Terms and Conditions and Privacy Policy"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Masters
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								ITK_Careers as "ITK Careers"
+								Image
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit 
+							Duplicate 
+							Delete 
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								ITK_Careers as "ITK Careers"
+								Image
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Company_Masters
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								ITK_Careers as "Company Name"
+								Website
+								Industry
+								Company_Address as "Company Address"
+								Contact_Email as "Contact Email"
+								Phone_Number1 as "Phone Number"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit 
+							Duplicate 
+							Delete 
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								ITK_Careers as "Company Name"
+								Website
+								Industry
+								Company_Address as "Company Address"
+								Contact_Email as "Contact Email"
+								Phone_Number1 as "Phone Number"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Interview_Rounds_Masters
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								Round_Name as "Round Name"
+								Round_Order as "Round Order"
+								ID
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit 
+							Duplicate 
+							Delete 
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Round_Name as "Round Name"
+								Round_Order as "Round Order"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Application_Status_and_Information_Tracker_Report
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								Interview_Round as "Interview Round"
+								Round_Score as "Round Score"
+								Round_Status as "Round Status"
+								Iterviewer_Comments as "Interviewer Comments"
+								Applicant
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit 
+							Duplicate 
+							Delete 
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Applicant
+								Interview_Round as "Interview Round"
+								Round_Score as "Round Score"
+								Round_Status as "Round Status"
+								Iterviewer_Comments as "Interviewer Comments"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Interview_Schedules
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								Applicant
+								Previous_Round_Status as "Previous Round Status"
+								"Schedule Interview"
+								Round_Name as "Round Name"
+								Interview_Start as "Interview Start"
+								Interview_End as "Interview End"
+								Schedule_Status as "Schedule Status"
+								"Validate"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							"Validate"
+							Edit 
+							Duplicate 
+							Delete 
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Applicant
+								Round_Name as "Round Name"
+								Interview_Start as "Interview Start"
+								Interview_End as "Interview End"
+								Schedule_Status as "Schedule Status"
+								Previous_Round_Status as "Previous Round Status"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Employees1
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Email
+								Phone_Number as "Phone"
+								Role
+								Date_of_Joining as " Date of Joining"
+								Software_Developer_Registration_Form as "Registration Form"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit 
+							Duplicate 
+							Delete 
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Employee_Name as "Employee Name"
+								Email
+								Phone_Number as "Phone"
+								Role
+								Date_of_Joining as " Date of Joining"
+								Software_Developer_Registration_Form as "Registration Form"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report All_Interview_Roles
+			{
+				quickview
+				(
+					layout
+					(
+						displaylayout = "classic"
+						datablock1
+						(
+							fields
+							(
+								S_No as "S.No:"
+								Roles
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit 
+							Duplicate 
+							Delete 
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record 
+    					)
+						on right click
+						(
+							Edit 
+							Delete 
+							Duplicate 
+							View Record 
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								S_No as "S.No:"
+								Roles
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			unused
+			{
+				form  Master
+				{
+					icon = "sport-crown"
+				}
+				report All_Masters
+				{
+					icon = "tech-desktop"
+				}
+				form  Company_Master
+				{
+					icon = "sport-crown"
+				}
+				form  Employees1
+				{
+					icon = "users-single-04"
+				}
+				form  Interview_Rounds_Master
+				{
+					icon = "users-2-a-time"
+				}
+				form  Application_Status_and_Information_Tracker
+				{
+					icon = "travel-info"
+				}
+				report Applicant_Location
+				{
+					icon = "design-2-form"
+				}
+				form  Interview_Schedule
+				{
+					icon = "tech-webcam-38"
+				}
+				systemcomponent
+				{
+					type = approval
+					approval status = pending
+					displayname = "Pending Tasks"
+					icon = "ui-2-hourglass"
+				}
+				systemcomponent
+				{
+					type = approval
+					approval status = completed
+					displayname = "Completed Tasks"
+					icon = "design-todo"
+				}
+				systemcomponent
+				{
+					type = localization
+					displayname = "Language Selection"
+					icon = "education-language"
+				}
+				systemcomponent
+				{
+					type = connection
+					displayname = "Integrations"
+					icon = "tech-2-connection"
+				}
+				form  Interview_Roles
+				{
+					icon = "media-1-play-69"
+				}
+				report Application_Status_and_Information_Tracker_Report
+				{
+					icon = "tech-desktop"
+				}
+			}
+			space User_Interface
+			{
+				displayname = "User Interface"
+				icon = "objects-spaceship"
+
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+					page Application_Dasboard
+					{
+						icon = "design-web-design"
+					}
+					form  Registration_Form
+					{
+						icon = "design-2-form"
+					}
+					report Registration_Form_Report
+					{
+						icon = "tech-desktop"
+					}
+					report All_Interview_Schedules
+					{
+						icon = "tech-desktop"
+					}
+			}
+			space Masters
+			{
+				displayname = "Masters"
+				icon = "objects-spaceship"
+
+					report All_Company_Masters
+					{
+						icon = "tech-desktop"
+					}
+					report All_Employees1
+					{
+						icon = "tech-desktop"
+					}
+					report All_Interview_Rounds_Masters
+					{
+						icon = "tech-desktop"
+					}
+					report All_Interview_Roles
+					{
+						icon = "tech-desktop"
+					}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			layout
+			{
+				theme = "theme_9"
+			}
+			font = "lato"
+			color options
+			{
+				color = "11"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Application_Status_and_Information_Tracker
+			{
+				label placement = auto
+			}
+			form Company_Master
+			{
+				label placement = auto
+			}
+			form Employees1
+			{
+				label placement = auto
+			}
+			form Interview_Roles
+			{
+				label placement = auto
+			}
+			form Interview_Rounds_Master
+			{
+				label placement = auto
+			}
+			form Interview_Schedule
+			{
+				label placement = auto
+			}
+			form Master
+			{
+				label placement = auto
+			}
+			form Registration_Form
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Application_Status_and_Information_Tracker
+			{
+				label placement = auto
+			}
+			form Company_Master
+			{
+				label placement = auto
+			}
+			form Employees1
+			{
+				label placement = auto
+			}
+			form Interview_Roles
+			{
+				label placement = auto
+			}
+			form Interview_Rounds_Master
+			{
+				label placement = auto
+			}
+			form Interview_Schedule
+			{
+				label placement = auto
+			}
+			form Master
+			{
+				label placement = auto
+			}
+			form Registration_Form
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = turquoise
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
